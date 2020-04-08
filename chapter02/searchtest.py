@@ -31,6 +31,24 @@ class SearchTest(unittest.TestCase):
 
         self.assertEqual(5, len(products))
 
+    def test_search_by_name(self):
+        driver = self.driver
+
+        # get the search textbox
+        search_field = driver.find_element_by_name('q')
+        search_field.clear()
+
+        # enter search keyword and submit
+        search_field.send_keys('salt shaker')
+        search_field.submit()
+
+        # get all the anchor elements which have
+        # product names displayed
+        # currently on result page using
+        # find_elements_by_xpath method
+        products = self.driver.find_elements_by_xpath ('//h2[@class=‘product-name’]/a')
+        self.assertEqual(1, len(products))
+
     def tearDown(self):
         # close the browser window
         self.driver.close()
