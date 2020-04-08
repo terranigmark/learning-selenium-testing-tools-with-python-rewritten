@@ -46,7 +46,7 @@ class SearchTest(unittest.TestCase):
         # product names displayed
         # currently on result page using
         # find_elements_by_xpath method
-        products = self.driver.find_elements_by_xpath ('//h2[@class=‘product-name’]/a')
+        products = driver.find_elements_by_xpath('//*[@id="top"]/body/div/div[2]/div[2]/div/div[2]/div[2]/div[3]/ul/li/div/h2')
         self.assertEqual(1, len(products))
 
     def tearDown(self):
