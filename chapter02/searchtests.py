@@ -1,7 +1,7 @@
 import unittest
 from selenium import webdriver
 
-class SearchTest(unittest.TestCase):
+class SearchTests(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Opera(executable_path = '../operadriver')
         driver = self.driver
