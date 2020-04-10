@@ -21,8 +21,12 @@ class HomePageTests(unittest.TestCase):
         self.assertEqual('128', search_field.get_attribute('maxlength'))
 
     def test_search_text_field_by_name(self):
-        # get the search textbox
+        # get the search textbox by attribute name
         search_field = self.driver.find_element_by_name('q')
+
+    def test_search_text_field_by_class(self):
+        # get the search textbox by class name
+        search_field = self.driver.find_element_by_class_name('input-text')
 
     @classmethod
     def tearDownClass(cls):
