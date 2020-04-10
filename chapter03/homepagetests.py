@@ -35,6 +35,16 @@ class HomePageTests(unittest.TestCase):
         # check Search button is enabled
         self.assertTrue(search_button.is_enabled())
 
+    def test_count_of_promo_banners_images(self):
+        # get promo banner list
+        banner_list = self.driver.find_element_by_class_name('promos')
+
+        # get images from the banner list
+        banners = banner_list.find_elements_by_tag_name('img')
+
+        # check there are 3 tags displayed on the page
+        self.assertEqual(3, len(banners))
+
     @classmethod
     def tearDownClass(cls):
         # close the browser window
