@@ -28,6 +28,13 @@ class HomePageTests(unittest.TestCase):
         # get the search textbox by class name
         search_field = self.driver.find_element_by_class_name('input-text')
 
+    def test_search_button_enabled(self):
+        # get Search button
+        search_button = self.driver.find_element_by_class_name('button')
+
+        # check Search button is enabled
+        self.assertTrue(search_button.is_enabled())
+
     @classmethod
     def tearDownClass(cls):
         # close the browser window
