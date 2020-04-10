@@ -20,6 +20,10 @@ class HomePageTests(unittest.TestCase):
         # check maxlength attribute is set to 128
         self.assertEqual('128', search_field.get_attribute('maxlength'))
 
+    def test_search_text_field_by_name(self):
+        # get the search textbox
+        search_field = self.driver.find_element_by_name('q')
+
     @classmethod
     def tearDownClass(cls):
         # close the browser window
