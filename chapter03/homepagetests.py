@@ -78,6 +78,13 @@ class HomePageTests(unittest.TestCase):
         # the Home page footer
         self.assertTrue(account_link.is_displayed())
 
+    def test_account_links(self):
+        # get all the links with Account text in it
+        account_links = self.driver.find_elements_by_partial_link_text('ACCOUNT')
+
+        # check Account and My Account link is displayed in the Home Page footer
+        self.assertTrue(2, len(account_links))
+
     @classmethod
     def tearDownClass(cls):
         # close the browser window
