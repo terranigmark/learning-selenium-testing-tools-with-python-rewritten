@@ -70,6 +70,14 @@ class HomePageTests(unittest.TestCase):
         close_button = self.driver.find_element_by_css_selector('div.minicart-wrapper a.close')
         close_button.click()
 
+    def test_my_account_link_is_displayed(self):
+        # get account link
+        account_link = self.driver.find_element_by_link_text('ACCOUNT')
+
+        # check My Account link is displayed/visible in
+        # the Home page footer
+        self.assertTrue(account_link.is_displayed())
+
     @classmethod
     def tearDownClass(cls):
         # close the browser window
