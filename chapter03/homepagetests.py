@@ -45,6 +45,16 @@ class HomePageTests(unittest.TestCase):
         # check there are 3 tags displayed on the page
         self.assertEqual(3, len(banners))
 
+    def test_vip_promo(self):
+        # get vip promo image
+        vip_promo = self.driver.find_element_by_xpath('//img[@alt="Shop Private Sales - Members Only"]')
+
+        # check vip promo logo is displayed on Home page
+        self.assertTrue(vip_promo.is_displayed())
+        #click on vip promo images to open the page
+        vip_promo.click()
+        self.assertEqual('VIP', self.driver.title)
+
     @classmethod
     def tearDownClass(cls):
         # close the browser window
