@@ -29,7 +29,7 @@ class RegisterNewUser(unittest.TestCase):
         create_account_button.click()
 
         # check title
-        self.assertEquals('Create New Customer Account', driver.title)
+        self.assertEqual('Create New Customer Account', driver.title)
 
         # get all the fields from Create an Account form
         first_name = driver.find_element_by_id('firstname')
@@ -39,11 +39,20 @@ class RegisterNewUser(unittest.TestCase):
         news_letter_subscription = driver.find_element_by_id('is_subscribed')
         password = driver.find_element_by_id('password')
         confirm_password = driver.find_element_by_id('confirmation')
-        submit_button = driver.find_element_by_xpath('//button[@title="Submit"]')
+        submit_button = driver.find_element_by_xpath('//*[@id="form-validate"]/div[2]/button')
 
         # check maxlength of first name and last name textbox
         self.assertEqual('255', first_name.get_attribute('maxlength'))
         self.assertEqual('255', last_name.get_attribute('maxlength'))
+
+        # check all fields are enabled
+        self.assertTrue(first_name.is_enabled()
+            and last_name.is_enabled()
+            and email_address.is_enabled()
+            and news_letter_subscription.is_enabled()
+            and password.is_enabled()
+            and confirm_password.is_enabled()
+            and submit_button.is_enabled())
 
     def tearDown(self):
         self.driver.implicitly_wait(3)
