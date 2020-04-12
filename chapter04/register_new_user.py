@@ -54,6 +54,23 @@ class RegisterNewUser(unittest.TestCase):
             and confirm_password.is_enabled()
             and submit_button.is_enabled())
 
+        # check Sign Up for Newsletter is unchecked
+        self.assertFalse(news_letter_subscription.is_selected())
+
+        # fill out all the fields
+        first_name.send_keys('Test')
+        middle_name.send_keys('Testing')
+        last_name.send_keys('User1')
+        news_letter_subscription.click()
+        email_address.send_keys('test_user2@testmail.com')
+        password.send_keys('tester')
+        confirm_password.send_keys('tester')
+        submit_button.click()
+
+        # check new user is registered
+        self.assertEqual('Hello, Test Testing User1!', driver.find_element_by_css_selector('p.hello > strong').text)
+        self.assertTrue(driver.find_element_by_css_selector('p.welcome-msg').is_displayed())
+
     def tearDown(self):
         self.driver.implicitly_wait(3)
         self.driver.close()
