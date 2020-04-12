@@ -31,6 +31,20 @@ class RegisterNewUser(unittest.TestCase):
         # check title
         self.assertEquals('Create New Customer Account', driver.title)
 
+        # get all the fields from Create an Account form
+        first_name = driver.find_element_by_id('firstname')
+        middle_name = driver.find_element_by_id('middlename')
+        last_name = driver.find_element_by_id('lastname')
+        email_address = driver.find_element_by_id('email_address')
+        news_letter_subscription = driver.find_element_by_id('is_subscribed')
+        password = driver.find_element_by_id('password')
+        confirm_password = driver.find_element_by_id('confirmation')
+        submit_button = driver.find_element_by_xpath('//button[@title="Submit"]')
+
+        # check maxlength of first name and last name textbox
+        self.assertEqual('255', first_name.get_attribute('maxlength'))
+        self.assertEqual('255', last_name.get_attribute('maxlength'))
+
     def tearDown(self):
         self.driver.implicitly_wait(3)
         self.driver.close()
